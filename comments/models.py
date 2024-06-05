@@ -1,21 +1,23 @@
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import User
+from django.urls import reverse
+
+class Comment(models.Model):
+    post = models.ForeignKey('Post', on_delete=models.CASCADE)
+    content = models.TextField()
+
+    def __str__(self):
+        return f'Comment on {self.post.title}'
 
 class Post(models.Model):
-    image = models.ImageField(
-        default ="default_foo.png", upload_to ="post_picture")
+    title = models.CharField(max_length=50)
     caption = models.TextField()
-    date_posted = models.DateTimeField(default = timezone.now)
-    author = models.ForeignKey(User, on_delete = models.CASCADE)
- 
+
     def __str__(self):
-        return f'{self.author.username}\'s Post- {self.title}'
- 
+        return f'Post- {self.title}'
+
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        img = Image.open(self.image.path)
-        if img.height > 400 or img.width > 400:
-            output_size = (300, 300)
-            img.thumbnail(output_size)
-            img.save(self.image.path)
+
+    def get_absolute_url(self):
+        return reverse('post_detail', kwargs={'id': self.id})

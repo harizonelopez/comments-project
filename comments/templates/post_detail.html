@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %} homepage {% endblock %}
+{% block title %} {{ post.title }} {% endblock %}
 
 {% block content %}
 <!DOCTYPE html>
@@ -49,38 +49,55 @@
             color: #61dafb;
         }
 
+        h2 {
+            color: greenyellow;
+        }
+
+        h3 {
+            color: red;
+        }
+
         h6 {
-          color: greenyellow;
+            color: rgb(34, 196, 40);
         }
        
     </style>
 </head>
 <body>
-  <section>
-    <hr>
-    <h1 align="center">All Posts</h1>
-    <hr>
     <section>
-      <a href="{% url 'create_post' %}">Create New Post</a>
-      {% for post in posts %}
-        <div>
-          <section>
-              <h2><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h2>
-              <h6> {{ post.caption }}</h6>
-              <form method="POST" action="{% url 'delete_post' post.id %}">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-danger">Delete Post</button>
-            </form>
+        <hr>
+        <h1 align="center">{{ post.title }} Post</h1>
+        <hr>
+        <section>
+            <h2 align="center">Comments section</h2><br>
+            <h3>Previous comments</h3>
+            {% for comment in post.comment_set.all %}
+                <ul>
+                    <li>
+                        <h6> {{ comment.content }} </h6>
+                    </li>
+                </ul>
+            {% empty %}
+                <p>No comments yet. Be the first to comment!</p>
+            {% endfor %}                
+            
+            <section>
+                <h2>Add a Comment</h2>
+                <form method='POST'>
+                    {% csrf_token %}
+                    {{ comment_form.as_p }}
+
+                    <button type="submit" class="btn btn-success">Add Comment</button>
+                </form>
             </section>
-        </div>
-      {% endfor %}
-    </section>
-    
-    <footer>
-      <p>&copy; 2024 Dev_aladinh production</p>
-    </footer>
+
+        </section>
         
-  </section>
+        <footer>
+            <p>&copy; 2024 Dev_aladinh production</p>
+        </footer>
+        
+    </section>
 </body>
 </html>
 {% endblock %}
