@@ -61,13 +61,13 @@
     <h1 align="center">All Posts</h1>
     <hr>
     <section>
-      <a href="{% url 'create_post' %}">Create New Post</a>
+      <h6><a href="{% url 'create_post' %}">Create New Post</a></h6>
       {% for post in posts %}
         <div>
           <section>
               <h2><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h2>
               <h6> {{ post.caption }}</h6>
-              <form method="POST" action="{% url 'delete_post' post.id %}">
+              <form method='POST' action="{% url 'delete_post' post.id %}">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger">Delete Post</button>
             </form>

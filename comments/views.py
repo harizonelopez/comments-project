@@ -32,7 +32,7 @@ def post_detailview(request, id):
             comment = cf.save(commit=False)
             comment.post = post
             comment.save()
-            return redirect('home')
+            cf = CommentForm()
     else:
         cf = CommentForm()
     

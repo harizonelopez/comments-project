@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %} {{ post.title }} {% endblock %}
+{% block title %} {{ post.title }} post {% endblock %}
 
 {% block content %}
 <!DOCTYPE html>
@@ -43,6 +43,10 @@
             position: fixed;
             bottom: 0;
             width: 65%;
+        }
+
+        a {
+            color: red;
         }
 
         h1 {
@@ -91,6 +95,7 @@
                 </form>
             </section>
 
+            <h6 align="center"><button class="btn btn-primary"><a href="{% url 'home' %}">Home</a></button></h6>
         </section>
         
         <footer>

@@ -18,6 +18,15 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ['title', 'caption']
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'caption': forms.Textarea(attrs={'class': 'form-control', 'rows': 4}),
+            'title': forms.TextInput(
+                attrs ={
+                    'class': 'form-control',
+                    'placeholder':'Enter post title here !'
+                }),
+            'caption': forms.Textarea(
+                attrs ={
+                    'class': 'form-control', 
+                    'placeholder':'Enter the post caption here !',
+                    'rows': 4
+                }),
         }
