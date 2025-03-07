@@ -50,3 +50,8 @@ def delete_post(request, id):
         return redirect('home')
     
     return redirect('home')
+
+
+# name_1 = http://127.0.0.1.5000.com --> Flask Environment
+# name_2 = http://127.0.0.1.8000 --> Django Environment
+# dormain host = www.google.com --> For deployment of the project

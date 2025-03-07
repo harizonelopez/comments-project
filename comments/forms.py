@@ -2,8 +2,10 @@ from django import forms
 from .models import Comment, Post
  
 class CommentForm(forms.ModelForm):
-    content = forms.CharField(label ="", widget = forms.Textarea(
-    attrs ={
+    content = forms.CharField(
+                            label ="", 
+                            widget = forms.Textarea(
+    attrs = {
         'class':'form-control',
         'placeholder':'Comment here !',
         'rows':4,

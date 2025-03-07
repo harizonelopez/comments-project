@@ -3,13 +3,13 @@
 
 ## Overview
 
- This project is a simple Django application for managing and displaying the user's posts and addition of comments to the posts. Users can add new posts and view existing ones, with options to delete and comment the posts.
+ This project is a simple Django application for managing and displaying the user's posts and addition of comments to the posts. Users can create new posts and view existing ones, with options to delete and comment on the posts.
 
 ## Features
 
-- Add new post
+- Craete new post
 - View the existing posts and comments
-- Delete and add new comments
+- Delete and add new comments to the posts
 
 ## Requirements
 
@@ -57,4 +57,3 @@
 
 ## Contact
  For any questions or feedback, please contact [harizonelopez24@gmail.com]
- 
